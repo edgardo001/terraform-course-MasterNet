@@ -1,0 +1,125 @@
+########################################
+# 🌍 TERRAFORM
+########################################
+# Carpetas y archivos locales de Terraform
+.terraform/
+iac/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Archivos sensibles o locales
+*.tfvars
+*.tfvars.json
+
+# Lock y logs
+.terraform.lock.hcl
+terraform.tfplan
+*.backup
+
+########################################
+# 💻 .NET / ASP.NET Core
+########################################
+# Compilados binarios y temporales
+bin/
+obj/
+out/
+Debug/
+Release/
+
+# Publicaciones
+publish/
+dist/
+build/
+
+# Paquetes NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+*.nuget.props
+*.nuget.targets
+*.dll
+*.exe
+*.pdb
+
+# Logs y caches
+*.log
+*.vspscc
+*.vssscc
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.vscode/
+*.cache/
+*.tmp
+*.dbmdl
+*.bak
+*.swp
+
+# Archivos de configuración locales
+appsettings.*.local.json
+secrets.json
+
+# Rider / JetBrains / Visual Studio
+.idea/
+*.DotSettings.user
+_ReSharper.Caches/
+
+########################################
+# 🧪 TESTS / COVERAGE
+########################################
+TestResults/
+*.coverage
+*.coveragexml
+*.trx
+*.testresults
+coverage.opencover.xml
+coverage.cobertura.xml
+
+########################################
+# 🐳 DOCKER / CONTAINERS
+########################################
+*.pid
+*.tar
+*.img
+*.iml
+docker-compose.override.yml
+.env
+.env.*
+
+########################################
+# 🪣 MISC / SISTEMAS
+########################################
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de herramientas
+*.ps1
+*.sh
+*.cmd
+*.bat
+
+# Archivos de dependencias locales
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tgz
+package-lock.json
+
+########################################
+# 📦 CI/CD
+########################################
+# GitHub Actions / pipelines
+!/.github/workflows/
+*.yml~
+*.yaml~
+*.bak
