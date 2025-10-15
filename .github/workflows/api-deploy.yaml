@@ -25,3 +25,19 @@ jobs:
           login-server: ${{ vars.ACR_SERVER }}
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: SHA from commit
+        id: vars
+        run: |
+          echo "short_sha=$(git rev-parse --short ${{ github.sha }} )" >> "$GITHUB_OUTPUT"
+
+      - name: Build and push docker image to ACR
+        env:
+          ACR_REGISTRY: ${{ vars.ACR_SERVER }}
+          IMAGE_TAG: ${{ steps.vars.outputs.short_sha }}
+        run: |
+          docker build -f MasterNet.Dockerfile \
+           -t $ACR_REGISTRY/netapp:$IMAGE_TAG \
+           -t $ACR_REGISTRY/netapp:latest \
+          .
+          docker push $ACR_REGISTRY/netapp --all-tags
