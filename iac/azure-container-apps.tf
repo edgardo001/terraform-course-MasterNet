@@ -32,7 +32,10 @@ resource "azurerm_container_app" "app" {
 
   lifecycle {
     ignore_changes = [ 
-      template, ingress, registry, secret,
+      template, 
+      ingress, 
+      registry, 
+      secret,
      ]
   }
 

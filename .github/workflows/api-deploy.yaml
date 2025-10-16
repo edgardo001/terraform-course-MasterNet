@@ -68,10 +68,8 @@ jobs:
           containerAppName: nu-masternet-dev-eus-aca
           containerAppEnvironment: nu-masternet-dev-eus-acae
           resourceGroup: nu-masternet-dev-eus-rg
-          secrets: |
-            sqlconn=${{ env.SQL_CONN }}
           environmentVariables: |
-            ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://+:8080 ConnectionStrings__SqlServerDatabase=secretref:sqlconn
+            ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://+:8080 ConnectionStrings__SqlServerDatabase=$SQL_CONN
 
 
 
