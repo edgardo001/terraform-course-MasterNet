@@ -18,6 +18,7 @@ namespace MasterNet.WebApi.Controllers;
 public class AccountController : ControllerBase
 {
 
+
     private readonly IMediatOR _sender;
     private readonly IUserAccessor _user;
 
@@ -37,7 +38,6 @@ public class AccountController : ControllerBase
     {
         var command = new LoginCommandRequest(request.Email, request.Password);
         var result = await _sender.Send(command, cancellationToken);
-        //return result.IsSuccess ? Ok(result.Value) : Unauthorized();
         return this.FromResult(result);
     }
 
