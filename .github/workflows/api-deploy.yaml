@@ -71,9 +71,7 @@ jobs:
           secrets: |
             sqlconn=${{ env.SQL_CONN }}
           environmentVariables: |
-            ASPNETCORE_ENVIRONMENT=Development
-            ASPNETCORE_URLS=http://+:8080 
-            ConnectionStrings__SqlServerDatabase=secretref:sqlconn
+            ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://+:8080 ConnectionStrings__SqlServerDatabase=secretref:sqlconn
 
 
 
