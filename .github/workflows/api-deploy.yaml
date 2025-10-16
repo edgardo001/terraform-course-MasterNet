@@ -59,7 +59,7 @@ jobs:
         env:
           IMAGE_TAG: ${{ needs.build-and-deploy.outputs.short_sha }}
           ACR_SERVER: ${{ vars.ACR_SERVER }}
-          PASSWORD: ${{ vars.SQL_DB_CONNECTIONSTRING }}
+          PASSWORD: ${{ secrets.SQL_DB_CONNECTIONSTRING }}
         with:
           registryUrl: ${{ vars.ACR_SERVER }}
           imageToDeploy: $ACR_SERVER/netapp:$IMAGE_TAG
