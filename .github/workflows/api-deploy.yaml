@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    outputs:
+      short_sha: ${{ steps.vars.outputs.short_sha }}
   
     steps:
       - name: Checkout Repository
@@ -51,6 +53,23 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: deploy to ACA
+        uses: azure/container-apps-deploy-action@v1
+        env:
+          IMAGE_TAG: ${{ needs.build-and-deploy.outputs.short_sha }}
+          ACR_SERVER: ${{ vars.ACR_SERVER }}
+        with:
+          registryUrl: ${{ vars.ACR_SERVER }}
+          imageToDeploy: $ACR_SERVER/app:$IMAGE_TAG
+          targetPort: 8080
+          ingress: external
+          containerAppName: nu-masternet-dev-eus-aca
+          containerAppEnvironment: nu-masternet-dev-eus-acae
+          resourceGroup: nu-masternet-dev-eus-rg
+          environmentVariables: |
+            ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://+:8080
+
 
 
     
