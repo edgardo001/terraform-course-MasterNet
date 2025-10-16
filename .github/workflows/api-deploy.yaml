@@ -59,7 +59,7 @@ jobs:
         env:
           IMAGE_TAG: ${{ needs.build-and-deploy.outputs.short_sha }}
           ACR_SERVER: ${{ vars.ACR_SERVER }}
-          PASSWORD: ${{ secrets.SQL_DB_CONNECTIONSTRING }}
+          SQL_CONN: ${{ secrets.SQL_DB_CONNECTIONSTRING }}
         with:
           registryUrl: ${{ env.ACR_SERVER }}
           imageToDeploy: ${{ env.ACR_SERVER }}/netapp:${{ env.IMAGE_TAG }}
@@ -68,8 +68,12 @@ jobs:
           containerAppName: nu-masternet-dev-eus-aca
           containerAppEnvironment: nu-masternet-dev-eus-acae
           resourceGroup: nu-masternet-dev-eus-rg
+          secrets: |
+            sqlconn=${{ env.SQL_CONN }}
           environmentVariables: |
-            ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://+:8080 ConnectionStrings__SqlServerDatabase=${{ env.PASSWORD }}
+            ASPNETCORE_ENVIRONMENT=Development
+            ASPNETCORE_URLS=http://+:8080 
+            ConnectionStrings__SqlServerDatabase=secretref:sqlconn
 
 
 
