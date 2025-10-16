@@ -61,7 +61,7 @@ jobs:
           ACR_SERVER: ${{ vars.ACR_SERVER }}
           PASSWORD: ${{ secrets.SQL_DB_CONNECTIONSTRING }}
         with:
-          registryUrl: ${{ vars.ACR_SERVER }}
+          registryUrl: ${{ env.ACR_SERVER }}
           imageToDeploy: ${{ env.ACR_SERVER }}/netapp:${{ env.IMAGE_TAG }}
           targetPort: 8080
           ingress: external
