@@ -61,7 +61,7 @@ jobs:
           ACR_SERVER: ${{ vars.ACR_SERVER }}
         with:
           registryUrl: ${{ vars.ACR_SERVER }}
-          imageToDeploy: $ACR_SERVER/app:$IMAGE_TAG
+          imageToDeploy: $ACR_SERVER/netapp:$IMAGE_TAG
           targetPort: 8080
           ingress: external
           containerAppName: nu-masternet-dev-eus-aca
