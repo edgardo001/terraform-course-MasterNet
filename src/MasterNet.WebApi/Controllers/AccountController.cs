@@ -18,7 +18,6 @@ namespace MasterNet.WebApi.Controllers;
 public class AccountController : ControllerBase
 {
 
-
     private readonly IMediatOR _sender;
     private readonly IUserAccessor _user;
 
