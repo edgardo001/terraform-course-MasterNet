@@ -10,7 +10,7 @@ resource "azurerm_container_app" "app" {
 
     container {
       cpu    = 0.25
-      image  = "mcr.microsoft.com/k8se/quisckstart:latest"
+      image  = "mcr.microsoft.com/k8se/quickstart:latest"
       memory = "0.5Gi"
       name   = "nu-masternet-dev-eus-app"
     }
