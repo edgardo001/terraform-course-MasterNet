@@ -5,6 +5,6 @@ resource "azurerm_resource_group" "my-nu-masternet-dev-eus-rg" {
     tags = {
         environment = var.env_id
         src = var.src_key
-        test="value test final"
+        test="value test finale"
     }
 }
