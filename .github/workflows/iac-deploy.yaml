@@ -2,6 +2,8 @@ name: "IaC Continuous Integration/Deployment"
 
 on:
   push:
+    paths:
+      - 'iac/**'
     branches:
       - main
 
@@ -38,7 +40,7 @@ jobs:
         working-directory: ./iac/
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
+        run: terraform plan -var="sql_pass=${{ secrets.TF_VAR_DB_PASSWORD }}" -out=tfplan
         working-directory: ./iac/
 
       - name: Terraform Apply
