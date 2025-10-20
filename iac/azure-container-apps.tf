@@ -6,7 +6,7 @@ resource "azurerm_container_app" "app" {
 
   template {
     min_replicas = 1
-    max_replicas = 3
+    max_replicas = 1
 
     container {
       name = "nu-masternet-dev-eus-app"
@@ -20,7 +20,7 @@ resource "azurerm_container_app" "app" {
   ingress {
     allow_insecure_connections = false
     external_enabled           = true
-    target_port                = 8080
+    target_port                = 80
 
     traffic_weight {
       percentage      = 100
