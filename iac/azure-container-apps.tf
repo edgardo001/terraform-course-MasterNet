@@ -9,10 +9,10 @@ resource "azurerm_container_app" "app" {
     max_replicas = 1
 
     container {
-      name = "nu-masternet-dev-eus-app"
-      cpu=0.25
+      cpu    = 0.25
+      image  = "mcr.microsoft.com/k8se/quickstart:latest"
       memory = "0.5Gi"
-      image = "mcr.microsoft.com/k8se/quickstart:latest"
+      name   = "stub"
     }
 
   }
@@ -30,7 +30,16 @@ resource "azurerm_container_app" "app" {
 
   }
 
- tags = {
+  lifecycle {
+    ignore_changes = [ 
+      template, 
+      ingress, 
+      registry, 
+      secret,
+     ]
+  }
+
+  tags = {
     environment = var.env_id
     src         = var.src_key
   }
