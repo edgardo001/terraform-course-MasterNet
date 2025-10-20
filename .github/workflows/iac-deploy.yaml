@@ -50,6 +50,4 @@ jobs:
       - name: Notify Failure
         if: failure()
         run: echo "Terraform executed with errors ${{ github.ref_name }}"
-
-
-      
+  
