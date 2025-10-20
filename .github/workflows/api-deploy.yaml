@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_run:            # 👈 encadenado desde IaC
+  workflow_run:           
     workflows: ["IaC Continuous Integration/Deployment"]
     types: [completed]
     branches: [ main ]
@@ -12,6 +12,7 @@ on:
 concurrency:
   group: aca-dev
   cancel-in-progress: false
+
 
 jobs:
   build-and-deploy:
