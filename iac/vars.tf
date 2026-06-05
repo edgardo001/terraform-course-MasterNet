@@ -39,5 +39,5 @@ variable "src_key" {
 variable "subscription_id" {
     type = string
     description = "Azure subscription id"
-    default = "c98a8f65-7901-4be9-b1b7-ba2c415a46fe"
+    default = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 }
