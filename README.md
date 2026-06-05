@@ -116,19 +116,16 @@ graph LR
 ### Infraestructura en Azure
 
 ```mermaid
-graph TD
-    subgraph "Azure - East US"
-        RG[Resource Group<br/>nu-masternet-dev-eus-rg]
-        SQL[SQL Server<br/>nu-masternet-dev-eus-sqlserver-main]
-        DB[(SQL Database<br/>nu-masternet-dev-eus-db)]
-        ACR[Container Registry<br/>numasternet{env_id}eusacr]
-        LAW[Log Analytics<br/>nu-masternet-{env_id}-eus-law]
-        ACAE[Container App Environment<br/>nu-masternet-dev-eus-acae]
-        ACA[Container App<br/>nu-masternet-dev-eus-aca]
-    end
-
-    subgraph "Azure Storage"
-        STATE[(Terraform State<br/>nuiacdeveusac)]
+flowchart TB
+    subgraph Azure["Azure - East US"]
+        direction TB
+        RG("Resource Group<br/>nu-masternet-dev-eus-rg")
+        SQL("SQL Server<br/>nu-masternet-dev-eus-sqlserver-main")
+        DB(("SQL Database<br/>nu-masternet-dev-eus-db"))
+        ACR("Container Registry<br/>numasternet-ACR")
+        LAW("Log Analytics<br/>nu-masternet-LAW")
+        ACAE("Container App Env<br/>nu-masternet-dev-eus-acae")
+        ACA("Container App<br/>nu-masternet-dev-eus-aca")
     end
 
     RG --> SQL
@@ -138,9 +135,9 @@ graph TD
     SQL --> DB
     ACAE --> ACA
     ACAE --> LAW
-    ACA -.-> ACR
-    ACA -.-> SQL
 ```
+
+> **Nota:** Los nombres reales usan `{env_id}` como sufijo (ej: `numasternetdeveusacr`, `nu-masternet-dev-eus-law`).
 
 | Recurso | Nombre |
 |---------|--------|
